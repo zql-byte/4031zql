@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教育技术学 · 个人成长主页</title>
+<style>
+  :root{
+    --bg:#0b1120; --bg2:#0f1a2e; --card:#131f35; --line:#23324d;
+    --txt:#e6edf7; --sub:#9fb0c9; --acc:#38bdf8; --acc2:#818cf8; --acc3:#34d399;
+    --grad:linear-gradient(120deg,#38bdf8,#818cf8);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,17,32,.72);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:18px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .menu{display:flex;gap:26px}
+  .menu a{color:var(--sub);text-decoration:none;font-size:14px;transition:.2s}
+  .menu a:hover{color:var(--acc)}
+
+  header.hero{padding:150px 0 90px;position:relative;background:radial-gradient(900px 400px at 80% -10%,rgba(56,189,248,.18),transparent),radial-gradient(700px 360px at 10% 10%,rgba(129,140,248,.16),transparent)}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--sub);background:var(--card)}
+  .badge b{color:var(--acc3)}
+  header.hero h1{font-size:52px;line-height:1.15;margin:22px 0 16px;font-weight:800}
+  header.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header.hero p{font-size:17px;color:var(--sub);max-width:620px}
+  .cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:12px 24px;border-radius:12px;font-size:15px;text-decoration:none;font-weight:600;transition:.2s}
+  .btn.p{background:var(--grad);color:#06101f}
+  .btn.p:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(56,189,248,.35)}
+  .btn.g{border:1px solid var(--line);color:var(--txt)}
+  .btn.g:hover{border-color:var(--acc)}
+
+  section{padding:72px 0}
+  .eyebrow{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);font-weight:700}
+  h2.title{font-size:32px;margin:8px 0 36px;font-weight:800}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;text-align:center}
+  .stat b{display:block;font-size:30px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800}
+  .stat span{font-size:13px;color:var(--sub)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;transition:.25s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-6px);border-color:var(--acc)}
+  .card .ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,rgba(56,189,248,.2),rgba(129,140,248,.2));margin-bottom:16px;color:var(--acc)}
+  .card h3{font-size:17px;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--sub)}
+  .tags{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:12px;padding:4px 10px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);color:var(--sub)}
+
+  .tl{position:relative;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .item{position:relative;margin-bottom:26px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+  .item::before{content:"";position:absolute;left:-28px;top:24px;width:14px;height:14px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(56,189,248,.18)}
+  .item .yr{font-size:13px;color:var(--acc);font-weight:700}
+  .item h4{font-size:16px;margin:4px 0}
+  .item p{font-size:14px;color:var(--sub)}
+
+  .work{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.25s}
+  .work:hover{transform:translateY(-6px);border-color:var(--acc2)}
+  .work .thumb{height:150px;background:linear-gradient(135deg,rgba(56,189,248,.25),rgba(129,140,248,.25));display:flex;align-items:center;justify-content:center;color:#cfe3ff}
+  .work .body{padding:20px}
+  .work h4{font-size:16px;margin-bottom:6px}
+  .work p{font-size:13px;color:var(--sub)}
+
+  .contact{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:48px;text-align:center}
+  .contact h2{font-size:30px;margin-bottom:12px}
+  .contact p{color:var(--sub);margin-bottom:26px}
+  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--sub);font-size:13px}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:820px){
+    .menu{display:none}
+    header.hero h1{font-size:38px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:1fr}
+    .contact{padding:34px 22px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">EdTech Portfolio</div>
+    <div class="menu">
+      <a href="#about">关于我</a>
+      <a href="#skills">技能路线</a>
+      <a href="#plan">成长规划</a>
+      <a href="#works">作品展示</a>
+      <a href="#contact">联系</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">江西师范大学 · <b>教育技术学</b> · 2026级新生</span>
+    <h1>用技术重塑学习，<br>让<span>教育</span>更有温度</h1>
+    <p>你好，我是江西师范大学教育技术学专业的一名新生。我热衷于把教学设计理论与信息技术结合起来，探索 AI、数据与多媒体如何让学习变得更高效、更公平、更有趣。</p>
+    <div class="cta">
+      <a class="btn p" href="#works">看看我的作品</a>
+      <a class="btn g" href="#about">了解更多</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">About Me</div>
+    <h2 class="title">关于我</h2>
+    <div class="stats">
+      <div class="stat"><b>4年</b><span>本科培养周期</span></div>
+      <div class="stat"><b>3大</b><span>核心能力方向</span></div>
+      <div class="stat"><b>无限</b><span>探索与好奇</span></div>
+      <div class="stat"><b>1颗</b><span>教育初心</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">Skill Roadmap</div>
+    <h2 class="title">技能与学习路线</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>教学设计</h3>
+        <p>掌握学习理论、课程设计与教学评价方法，构建以学习者为中心的教学方案。</p>
+        <div class="tags"><span class="tag">ADDIE</span><span class="tag">学习科学</span><span class="tag">BOPPPS</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6l-5 6 5 6"/><path d="M16 6l5 6-5 6"/></svg></div>
+        <h3>技术开发</h3>
+        <p>用前端与编程实现互动课件、在线学习平台与教育小程序。</p>
+        <div class="tags"><span class="tag">HTML/CSS</span><span class="tag">Python</span><span class="tag">JS</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></div>
+        <h3>媒体创作</h3>
+        <p>视频剪辑、图形设计与交互媒体制作，让知识以更好的形态呈现。</p>
+        <div class="tags"><span class="tag">PR</span><span class="tag">PS</span><span class="tag">动画</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <h3>AI + 教育</h3>
+        <p>关注智能导学、学习分析与大模型在教学场景中的落地应用。</p>
+        <div class="tags"><span class="tag">学习分析</span><span class="tag">Prompt</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div>
+        <h3>数据思维</h3>
+        <p>用数据洞察学习行为，支持教学决策与个性化推荐。</p>
+        <div class="tags"><span class="tag">Excel</span><span class="tag">可视化</span></div>
+      </div>
+      <div class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.5L4 18z"/><path d="M8 9h8M8 12h5"/></svg></div>
+        <h3>教研表达</h3>
+        <p>把复杂的教学理念讲清楚、写明白，做好项目汇报与协作。</p>
+        <div class="tags"><span class="tag">写作</span><span class="tag">汇报</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plan" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">Growth Plan</div>
+    <h2 class="title">大学四年成长规划</h2>
+    <div class="tl">
+      <div class="item"><div class="yr">大一 · 打基础</div><h4>夯实专业与编程基础</h4><p>学好教育学、程序设计等课程，加入创新团队，熟悉教学设计基本方法。</p></div>
+      <div class="item"><div class="yr">大二 · 拓技能</div><h4>深耕多媒体与前端开发</h4><p>系统学习课件开发、视频制作，参与学科竞赛与教师技能训练。</p></div>
+      <div class="item"><div class="yr">大三 · 强实践</div><h4>项目实战与实习</h4><p>参与教育信息化项目，走进中小学或企业实习，积累真实作品。</p></div>
+      <div class="item"><div class="yr">大四 · 谋未来</div><h4>毕设与升学就业抉择</h4><p>完成高质量毕业设计，明确考研、保研或就业方向并全力冲刺。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="works" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">My Works</div>
+    <h2 class="title">作品展示</h2>
+    <div class="grid">
+      <div class="work"><div class="thumb"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div class="body"><h4>互动教学课件</h4><p>基于 HTML 的响应式互动课件原型，嵌入测验与动画反馈。</p></div></div>
+      <div class="work"><div class="thumb"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><div class="body"><h4>课程知识网站</h4><p>为学科知识搭建的可视化学习站点，结构清晰、易于检索。</p></div></div>
+      <div class="work"><div class="thumb"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></div><div class="body"><h4>微课视频</h4><p>从脚本、分镜到剪辑的完整微课作品，讲解清晰、画面精美。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="wrap">
+    <div class="contact">
+      <h2>一起探索教育的更多可能</h2>
+      <p>如果你也对教育技术、AI 与学习科学感兴趣，欢迎和我交流学习。</p>
+      <a class="btn p" href="mailto:you@example.com">给我发邮件</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 · 教育技术学 · 江西师范大学 · 用心做教育，用技术讲好学习的故事</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
